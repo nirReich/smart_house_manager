@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 export default function AddRoom(props) {
 
@@ -42,6 +43,7 @@ export default function AddRoom(props) {
             </select>
             <br/>
             <br/>
+            <Link to="/"><Button variant="danger">Cancel</Button></Link>
             <Link to="/"> <button onClick={()=>{props.add(roomName,roomType,roomColor)}}>Add</button></Link>
         </div>
     )
