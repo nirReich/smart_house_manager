@@ -19,17 +19,6 @@ export default function RoomPage(props) {//each room page
         }
     }
 
-    // let bgColor=()=>{
-    //     debugger
-    //     if (props.roomList.product.condition === false) {
-    //         return {backgroundColor: "red", height:"100px", width:"100px"}
-    //     }
-    //     else{
-    //         return {backgroundColor: "green", height:"50px", width:"50px"}
-    //     }
-    // }
-
-
 
     return (
         <div>
@@ -37,7 +26,7 @@ export default function RoomPage(props) {//each room page
 
             <h3>Type of Room: {props.roomList.type}</h3>
             <br/>
-            {props.roomList.product.map((element) => { return <button style={props.bgColor()} onClick={()=>{props.switchOnOff()}}>{element.type}</button> })}
+            {props.roomList.product.map((element,prodIndex) => { return <button style={props.bgColor(props.index)} onClick={()=>{props.switchOnOff(props.index,prodIndex)}}>{element.type}</button> })}
             <br/>
             {showProducts()}
 

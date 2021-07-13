@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddRoom from './components/AddRoom'
 import './App.css';
@@ -9,13 +10,12 @@ import RoomPage from './components/RoomPage';
 function App() {
 
   const [roomList, setRoomList] = useState([]);
-
+  
   let addRoomToList = (name, type, color) => {
     setRoomList([...roomList, { name: name, type: type, color: color, product: [] }])
   }
 
   let addProduct = (index,type)=>{
-   
     let tempProduct = {condition:false, type:type};
     roomList[index].product.push(tempProduct);
     setRoomList([...roomList]);
@@ -24,11 +24,11 @@ function App() {
   let switchOnOff=(indexRoom,indexProd)=>{
     roomList[indexRoom].product[indexProd].condition = !roomList[indexRoom].product[indexProd].condition
     setRoomList([...roomList]);
+    console.log(roomList[indexRoom].product[indexProd]);
   }
 
-  let bgColor=()=>{
-    debugger
-    if (roomList.product.condition === false) {
+  let bgColor=(index)=>{
+    if (roomList[index].product.condition === false) {
         return {backgroundColor: "red", height:"100px", width:"100px"}
     }
     else{
