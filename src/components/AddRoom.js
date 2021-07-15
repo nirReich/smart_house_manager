@@ -37,7 +37,7 @@ export default function AddRoom(props) {
             <label htmlFor="roomcolor">Select Room Color: </label>
             <select name="roomcolor" id="roomColor" onChange={setColor}>
                 <option value="white"></option>
-                <option value="white">White</option>
+                <option value="green">Green</option>
                 <option value="red">Red</option>
                 <option value="Blue">Blue</option>
             </select>

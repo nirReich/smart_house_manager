@@ -10,31 +10,31 @@ import RoomPage from './components/RoomPage';
 function App() {
 
   const [roomList, setRoomList] = useState([]);
-  
+
   let addRoomToList = (name, type, color) => {
     setRoomList([...roomList, { name: name, type: type, color: color, product: [] }])
   }
 
-  let addProduct = (index,type)=>{
-    let tempProduct = {condition:false, type:type};
+  let addProduct = (index, type) => {
+    let tempProduct = { condition: false, type: type };
     roomList[index].product.push(tempProduct);
     setRoomList([...roomList]);
   }
 
-  let switchOnOff=(indexRoom,indexProd)=>{
+  let switchOnOff = (indexRoom, indexProd) => {
     roomList[indexRoom].product[indexProd].condition = !roomList[indexRoom].product[indexProd].condition
     setRoomList([...roomList]);
     console.log(roomList[indexRoom].product[indexProd]);
   }
 
-  let bgColor=(index)=>{
-    if (roomList[index].product.condition === false) {
-        return {backgroundColor: "red", height:"100px", width:"100px"}
+  let bgColor = (index, prodIndex) => {
+    if (roomList[index].product[prodIndex].condition === false) {
+      return { backgroundColor: "red" }
     }
-    else{
-        return {backgroundColor: "green", height:"50px", width:"50px"}
+    else {
+      return { backgroundColor: "green" }
     }
-}
+  }
 
 
   return (
@@ -44,15 +44,18 @@ function App() {
 
       <Router>
 
-     
-      
+
+
         <Switch>
-          {roomList.map((element,index)=>{return <Route exact path={`/room${element.name}`} component={()=>{return <RoomPage roomList={element} index={index} addProduct={addProduct} switchOnOff={switchOnOff} bgColor={bgColor} />}}/>})}
-          
-          <Route exact path={'/'} component={()=>{return <Room roomList={roomList} />}}/>
-        
+          {roomList.map((element, index) => {
+            return <Route exact path={`/room${element.name}`} component={() => {
+              return <RoomPage roomList={element} index={index} addProduct={addProduct} switchOnOff={switchOnOff} bgColor={bgColor} />}} />
+          })}
+
+          <Route exact path={'/'} component={() => { return <Room roomList={roomList} /> }} />
+
           <Route exact path={"/addroom"} component={() => { return <AddRoom add={addRoomToList} /> }} />
-        
+
         </Switch>
       </Router>
     </div>

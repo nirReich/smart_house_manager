@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import ProductList from '../components/ProductList'
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 export default function RoomPage(props) {//each room page
 
@@ -11,7 +13,7 @@ export default function RoomPage(props) {//each room page
 
     let showProducts = () => {
         if (flag === false) {
-            return <button onClick={() => { setFlag(!flag) }}>Add Product</button>
+            return <Button variant="success" onClick={() => { setFlag(!flag) }}>Add Product</Button>
         }
         else {
             return <ProductList addProduct={props.addProduct} index={props.index} changeFlag={changeFlag} />
@@ -26,9 +28,10 @@ export default function RoomPage(props) {//each room page
 
             <h3>Type of Room: {props.roomList.type}</h3>
             <br/>
-            {props.roomList.product.map((element,prodIndex) => { return <button style={props.bgColor(props.index)} onClick={()=>{props.switchOnOff(props.index,prodIndex)}}>{element.type}</button> })}
+            {props.roomList.product.map((element,prodIndex) => { return <button style={props.bgColor(props.index,prodIndex)} onClick={()=>{props.switchOnOff(props.index,prodIndex)}}>{element.type}</button> })}
             <br/>
             {showProducts()}
+            <Link to="/"><Button variant="primary">Back</Button></Link>
 
         </div>
     )
