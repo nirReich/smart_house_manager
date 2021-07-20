@@ -12,7 +12,19 @@ function App() {
   const [roomList, setRoomList] = useState([]);
 
   let addRoomToList = (name, type, color) => {
-    setRoomList([...roomList, { name: name, type: type, color: color, product: [] }])
+    if (name.length < 4) {
+      alert(`Room name must be 4 letters or more!`)
+    }
+    else if(!type){
+      alert('Must select room type!')
+    }
+    else if(!color){
+     alert('must select room color!') 
+    }
+    else{
+      setRoomList([...roomList, { name: name, type: type, color: color, product: [] }])
+    }
+    
   }
 
   let addProduct = (index, type) => {

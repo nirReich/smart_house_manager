@@ -8,18 +8,28 @@ export default function ProductList(props) {
         setProduct(e.target.value)
     }
 
+    const buttonActiv =()=>{
+        if (product !== '') {
+            return false
+        }
+        else{
+            return true
+        }
+        
+    }
+
 
     return (
         <div>
             <select name="products" id="products" onChange={addPrudocts}>
-                <option value="AC"></option>
+                <option value="">Choose product</option>
                 <option value="AC">AC</option>
                 <option value="Lamp">Lamp</option>
                 <option value="Stereo">Stereo</option>
-                <option value="Boiler">Boiler</option>
+                <option value="Water Heater">Water Heater</option>
             </select>
             <br/>
-            <button onClick={()=>{props.addProduct(props.index,product)}}>Add Product</button>
+            <button disabled={buttonActiv()} onClick={()=>{props.addProduct(props.index,product)}}>Add Product</button>
         </div>
     )
 }

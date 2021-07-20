@@ -27,7 +27,7 @@ export default function AddRoom(props) {
             <br />
             <label htmlFor="roomType">Select Room Type: </label>
             <select name="roomTYpe" id="roomType" onChange={setType}>
-                <option value="bedroom"></option>
+                <option value="" disabled selected>Select room type</option>
                 <option value="bedroom">Bedroom</option>
                 <option value="kitchen">Kitchen</option>
                 <option value="bathroom">Bathroom</option>
@@ -36,7 +36,7 @@ export default function AddRoom(props) {
             <br />
             <label htmlFor="roomcolor">Select Room Color: </label>
             <select name="roomcolor" id="roomColor" onChange={setColor}>
-                <option value="white"></option>
+                <option value="" disabled selected>Select room color</option>
                 <option value="green">Green</option>
                 <option value="red">Red</option>
                 <option value="Blue">Blue</option>
